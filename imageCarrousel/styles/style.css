@@ -1,0 +1,117 @@
+/* 1. Use a more-intuitive box-sizing model. */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+/* 2. Remove default margin */
+* {
+margin: 0;
+}
+
+/* Typographic tweaks! 3. Add accessible line-height  4. Improve text rendering */
+body {
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+display: block;
+max-width: 100%;
+}
+
+/* 6. Remove built-in form typography styles */
+input, button, textarea, select {
+font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+overflow-wrap: break-word;
+}
+
+/* 8. Create a root stacking context */
+#root, #__next {
+isolation: isolate;
+}
+
+
+body {
+    border: 5px solid red;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.visor {
+    display: flex;
+    width: 980px;
+    height: 566px;
+    border-radius: 30px;
+    background-color: rgb(29, 29, 29);
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.image {
+    display: none;
+    object-fit: scale-down;
+    z-index: 2;
+}
+
+.image.active {
+    display: block;
+}
+
+
+.controller {
+    background-color: rgba(255, 255, 255, 0.404);
+
+    width: 120px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 250ms ease-in-out;
+    z-index: 3;
+}
+
+.right {
+    border-radius: 0 30px 30px 0;
+
+}
+
+.left {
+    border-radius: 30px 0 0 30px;
+}
+
+.controller:active.right {
+    transform: translateX(5%);
+}
+
+.controller:active.left {
+    transform: translateX(-5%);
+}
+
+
+
+.visor:hover .controller {
+    /* animation: fadeController 0.7s ease-in-out;
+    animation-fill-mode: forwards; */
+    transition: opacity 700ms ease-in-out;
+    opacity: 1;
+}
+
+.controller.right {
+    right: 0%;
+}
+
+
+.image {
+    position: absolute;
+    width: 980px;
+    height: 566px;
+}
